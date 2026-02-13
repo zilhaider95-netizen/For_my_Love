@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever Favorite</title>
+    <style>
+        :root {
+            --pink: #ff4d6d;
+            --light-pink: #ffeef2;
+            --dark-pink: #c9184a;
+        }
+
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--light-pink);
+            font-family: 'Segoe UI', sans-serif;
+            text-align: center;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+            width: 90%;
+            margin: 20px;
+        }
+
+        .hidden { display: none; }
+        
+        img.main-gif { width: 180px; border-radius: 10px; margin-bottom: 15px; }
+        
+        h1 { color: var(--dark-pink); font-size: 24px; }
+        p { color: #555; line-height: 1.5; }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+            position: relative;
+            height: 50px;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .primary-btn { background: var(--pink); color: white; }
+        .secondary-btn { background: #eee; color: #333; }
+        
+        #noBtn { position: absolute; }
+
+        /* Quiz Styling */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid var(--light-pink);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .quiz-option:hover { background: var(--light-pink); }
+
+        /* Gallery */
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .grid img { width: 100%; border-radius: 10px; border: 2px solid var(--pink); }
+    </style>
+</head>
+<body>
+
+    <div id="proposal" class="container">
+        <img class="main-gif" src="https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ3bmZqZzR4N3R4N3R4N3R4N3R4N3R4N3R4N3R4N3R4N3R4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1z/L4lvBpHFmTC5T9rCoy/giphy.gif" alt="Cute bear">
+        <h1>Will you be mine? ❤️</h1>
+        <p>Life is an incredible journey, and I want to spend every second of it with you.</p>
+        <div class="btn-group">
+            <button class="primary-btn" onclick="nextSection('proposal', 'quiz')">YES</button>
+            <button id="noBtn" class="secondary-btn" onmouseover="moveNo()">NO</button>
+        </div>
+    </div>
+
+    <div id="quiz" class="container hidden">
+        <h1>Quiz for you 👑</h1>
+        <p>Who is the absolute 'Boss' in this relationship?</p>
+        <div class="quiz-option" onclick="alert('Correct choice!')">Obviously You</div>
+        <div class="quiz-option" onclick="alert('Wrong! Try again 😜')">Me</div>
+        <div class="quiz-option" onclick="alert('She says hi!')">My Mom</div>
+        <button class="primary-btn" style="margin-top:20px" onclick="nextSection('quiz', 'letter')">Next Question</button>
+    </div>
+
+    <div id="letter" class="container hidden">
+        <h1>A Letter For You ✉️</h1>
+        <p style="font-style: italic; text-align: left;">
+            "My Baby, thank you for being my person. You are my home, my everything. In this T20 match of life, you're the only one I want in my dugout. I love you so much!"
+        </p>
+        <button class="primary-btn" onclick="nextSection('letter', 'gallery')">See Our Moments</button>
+    </div>
+
+    <div id="gallery" class="container hidden">
+        <h1>Look at this Cutie 🥰</h1>
+        <div class="grid">
+            <img src="https://via.placeholder.com/150/ff4d6d/ffffff?text=Our+Date" alt="Photo 1">
+            <img src="https://via.placeholder.com/150/ff4d6d/ffffff?text=Your+Smile" alt="Photo 2">
+            <img src="https://via.placeholder.com/150/ff4d6d/ffffff?text=Together" alt="Photo 3">
+            <img src="https://via.placeholder.com/150/ff4d6d/ffffff?text=Forever" alt="Photo 4">
+        </div>
+        <p style="margin-top: 15px;">You are my forever ❤️</p>
+    </div>
+
+    <script>
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            const x = Math.random() * (window.innerWidth - btn.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+            btn.style.left = x + 'px';
+            btn.style.top = y + 'px';
+        }
+
+        function nextSection(current, next) {
+            document.getElementById(current).classList.add('hidden');
+            document.getElementById(next).classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>
